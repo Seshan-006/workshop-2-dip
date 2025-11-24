@@ -25,10 +25,14 @@ from IPython.display import display, clear_output
 import ipywidgets as widgets
 from threading import Thread
 ```
+<img width="512" height="389" alt="download" src="https://github.com/user-attachments/assets/1534069a-99b8-4f28-805f-265c1e4aeaad" />
+
 ### Load YOLOv4
 ```
 net = cv2.dnn.readNet("yolov4.weights", "yolov4.cfg")
 ```
+<img width="512" height="389" alt="download" src="https://github.com/user-attachments/assets/68687c81-e399-41eb-a567-99a4b4ed1b57" />
+
 ### Load COCO classes
 ```
 with open("coco.names", "r") as f:
@@ -36,16 +40,22 @@ with open("coco.names", "r") as f:
 
 colors = np.random.uniform(0, 255, size=(len(classes), 3))
 ```
+<img width="512" height="389" alt="download" src="https://github.com/user-attachments/assets/81cb22ab-430f-4a8f-9346-e9c065c66e4b" />
+
 ### Get output layers
 ```
 layer_names = net.getLayerNames()
 outs = net.getUnconnectedOutLayers()
 output_layers = [layer_names[i - 1] for i in outs.flatten()]
 ```
+<img width="512" height="389" alt="download" src="https://github.com/user-attachments/assets/d26006f5-221f-43b4-97c1-2ebb0ea74560" />
+
 ### Start webcam
 ```
 cap = cv2.VideoCapture(0)
 ```
+<img width="512" height="389" alt="download" src="https://github.com/user-attachments/assets/1ca38d90-ce79-4d03-8d5d-ce8e2a068492" />
+
 ### Create a stop button
 ```
 stop_button = widgets.Button(description="Stop Detection", button_style='danger')
@@ -105,8 +115,6 @@ def detect_objects():
 thread = Thread(target=detect_objects)
 thread.start()
 ```
-### Output
-<img width="889" height="670" alt="image" src="https://github.com/user-attachments/assets/d1052bbb-d68d-4d5f-9d24-70dd779f4276" />
 
 ### Result:
 The webcam captures live video frames.
